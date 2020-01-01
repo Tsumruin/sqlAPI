@@ -1,0 +1,21 @@
+tr > * {
+  padding: 5px;
+  text-align: center;
+}
+
+tr > *:nth-child(odd) {
+  background-color: #edecff;
+}
+
+tr > *:nth-child(even) {
+  background-color: #d9f1ff;
+}
+
+.change {
+  margin: 10px;
+}
+
+.change a {
+  display: inline-block;
+  margin: 10px;
+}
