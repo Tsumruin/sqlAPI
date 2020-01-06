@@ -86,6 +86,41 @@ EOT;
     <p><input type="submit" name="submit" value="変更"></p>
 </form>
 
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>URL</th>
+        <th>junre_1</th>
+        <th>junre_2</th>
+        <th>junre_3</th>
+        <th>good</th>
+        <th>update</th>
+    </tr>
+
+<?php
+    $sql = "SELECT * FROM main ORDER BY id";
+    $result = executeQuery($sql);
+    while($row = pg_fetch_array($result)){
+        print<<<EOT
+        <tr>
+            <td>{$row["id"]}</td>
+            <td>{$row["title"]}</td>
+            <td>{$row["category"]}</td>
+            <td>{$row["url"]}</td>
+            <td>{$row["junre_1"]}</td>
+            <td>{$row["junre_2"]}</td>
+            <td>{$row["junre_3"]}</td>
+            <td>{$row["good"]}</td>
+            <td>{$row["update"]}</td>
+        </tr>
+EOT;
+    }
+    pg_free_result($result);
+?>
+</table>
+
 </body>
 
 </html>

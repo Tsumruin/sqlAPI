@@ -63,6 +63,27 @@ EOT;
     <p><input type="submit" name="submit" value="変更"></p>
 </form>
 
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Junre</th>
+    </tr>
+
+<?php
+    $sql = "SELECT * FROM junre ORDER BY id";
+    $result = executeQuery($sql);
+    while($row = pg_fetch_array($result)){
+        print<<<EOT
+        <tr>
+            <td>{$row["id"]}</td>
+            <td>{$row["name"]}</td>
+        </tr>
+EOT;
+    }
+    pg_free_result($result);
+?>
+</table>
+
 </body>
 
 </html>

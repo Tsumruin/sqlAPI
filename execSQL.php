@@ -1,6 +1,5 @@
 <?php
 
-
 function executeQuery($sql){
     $database_url = parse_url(getenv('DATABASE_URL'));
     $url = $database_url["host"];
@@ -19,5 +18,4 @@ function executeQuery($sql){
 
     return $result;
 }
-
 ?>
