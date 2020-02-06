@@ -14,8 +14,6 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/execSQL.php");
     <a href="./main.php">Change page information</a>
     <a href="./category.php">Change category</a>
     <a href="./junre.php">Change junre</a>
-    <a href="./add.php">Add data</a>
-    <a href="./insert.php">Delete data</a>
 </div>
 
 <?php

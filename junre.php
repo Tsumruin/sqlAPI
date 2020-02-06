@@ -21,12 +21,34 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/execSQL.php");
 <form action="#" method="post">
 
 <?php
-if(isset($_POST["category"])){
-    $sql = "UPDATE category SET name = '{$_POST["category"]}' WHERE id = {$_GET["id"]}";
+if(isset($_POST["junre"])){
+    $sql = "UPDATE junre SET name = '{$_POST["junre"]}' WHERE id = {$_GET["id"]}";
     $result = executeQuery($sql);
     if(isset($result)){
         echo "successfully updated.";
     }
+}
+if(isset($_GET["add_id"])){
+    $sql = "INSERT INTO junre VALUES({$_GET['add_id']}, '{$_GET['add_name']}')";
+    $result = executeQuery($sql);
+    if(isset($result)){
+        echo "successfully inserted.";
+    }
+    else{
+        echo "error occured";
+    }
+    pg_free_result($result);
+}
+if(isset($_POST["delete"])){
+    $sql = "DELETE FROM junre WHERE id={$_POST['del_id']}";
+    $result = executeQuery($sql);
+    if(isset($result)){
+        echo "successfully deleted.";
+    }
+    else{
+        echo "error occured";
+    }
+    pg_free_result($result);
 }
 if(isset($_GET["id"])){
     $id = $_GET["id"];
@@ -60,7 +82,11 @@ EOT;
 
 ?>
 
-    <p><input type="submit" name="submit" value="変更"></p>
+    <p>
+        <input type="submit" name="submit" value="変更">
+        <input type="submit" name="delete" value="削除">
+        <input type="hidden" name="del_id" value="<?= $_GET["id"]?>">
+    </p>
 </form>
 
 <table border="1">
@@ -68,6 +94,13 @@ EOT;
         <th>Id</th>
         <th>Junre</th>
     </tr>
+    <form action="#" method="get">
+        <tr>
+            <td><input type="text" name="add_id" size="3"></td>
+            <td><input type="text" name="add_name"></td>
+        </tr>
+        <input type="submit" value="追加">
+    </form>
 
 <?php
     $sql = "SELECT * FROM junre ORDER BY id";
