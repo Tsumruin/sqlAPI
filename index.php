@@ -14,10 +14,11 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/execSQL.php");
     <a href="./main.php">Change page information</a>
     <a href="./category.php">Change category</a>
     <a href="./junre.php">Change junre</a>
+    <a href="./add_junre.php">Add Junre</a>
 </div>
 
 <?php
-$sql = "SELECT main.id, main.title, category.name as category, main.url, j1.name as junre_1, j2.name as junre_2, j3.name as junre_3, main.good, main.update
+$sql = "SELECT main.id, main.title, category.name as category, main.url, j1.name as junre_1, j2.name as junre_2, j3.name as junre_3, main.update
 FROM main inner join category ON main.category = category.id
 inner join junre as j1 ON main.junre_1 = j1.id
 inner join junre as j2 ON main.junre_2 = j2.id
@@ -38,7 +39,6 @@ if($rows){
                 <th>junre_1</th>
                 <th>junre_2</th>
                 <th>junre_3</th>
-                <th>good</th>
                 <th>update</th>
             </tr>
 EOT;
@@ -52,7 +52,6 @@ EOT;
                 <td>{$row["junre_1"]}</td>
                 <td>{$row["junre_2"]}</td>
                 <td>{$row["junre_3"]}</td>
-                <td>{$row["good"]}</td>
                 <td>{$row["update"]}</td>
             </tr>
 EOT;
