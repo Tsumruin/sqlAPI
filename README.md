@@ -7,6 +7,7 @@ SQLの記法を勉強するために作成。
 ### mainテーブル
 
 | 主キー | title | 記事のタイトル | |
+| ---- | ---- | ---- | ---- |
 | 外部キー | category | 記事のカテゴリ | categoryテーブルのcategory_idを参照 |
 | | url | 記事のURL | |
 | 外部キー | junre1 | ジャンル1 | junreテーブルのjunre_idを参照 |
